@@ -3,7 +3,6 @@
 	import { enhance } from '$app/forms';
 	import { FloatingLabelInput, InputIconButton, Icon } from '$lib/components';
 	export let form;
-	const redirectTo = $page.url.searchParams.get('redirectTo') || '';
 	let passwordShown = false;
 </script>
 
@@ -53,7 +52,7 @@
                     </p>
                 </div>
 				<div class="text-sm">
-					<a href="/" class="font-semibold text-emerald-600 hover:text-emerald-500 dark:text-emerald-500 dark:hover:text-emerald-600">
+					<a href="/register" class="font-semibold text-emerald-600 hover:text-emerald-500 dark:text-emerald-500 dark:hover:text-emerald-600">
                         Create account
                     </a>
 				</div>
