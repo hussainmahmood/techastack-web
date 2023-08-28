@@ -14,7 +14,7 @@ cd techstack-web
 
 ## Setup project
 
-Create a .env file with **SECRET_API_KEY** in root of your folder
+Create a .env file with **SECRET_API_URI** in root of your folder
 
 `SECRET_API_URI=http://{hostname}:{port}/api`
 
