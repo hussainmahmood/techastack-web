@@ -1,5 +1,5 @@
 <a href="/" class="flex items-baseline mb-1.5 space-x-[1.5px]">
-	<span class="font-light text-[1.8rem] text-black dark:text-white hidden sm:block">Search</span
+	<span class="font-light text-[1.6rem] text-black dark:text-white hidden md:block">Search</span
 	>
-	<span class="font-bold text-[2.7rem] text-emerald-600">Product</span>
+	<span class="flex items-baseline font-bold text-[2.4rem] text-emerald-600"><span>P</span><span class="hidden sm:block">roduct</span></span>
 </a>

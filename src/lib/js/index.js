@@ -3,3 +3,7 @@
 // authSchema
 export { loginSchema } from "./authSchema/loginSchema.js"
 export { registerSchema } from "./authSchema/registerSchema.js"
+
+// utils
+export { clickOutside } from "./utils/clickOutside.js"
+export { generateRandomString } from "./utils/generateRandomString.js"

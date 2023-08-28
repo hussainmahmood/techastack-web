@@ -19,7 +19,7 @@ export const registerSchema = z
 				required_error: 'Password is required',
 				invalid_type_error: 'Password must be a string'
 			})
-			.min(10, { message: 'Password must contain atleast 10 characters' })
+			.min(6, { message: 'Password must contain atleast 6 characters' })
 			.max(64, { message: 'Password must be less than 64 characters' })
 			.trim(),
 		confirm_password: z

@@ -1,17 +1,7 @@
+import { SECRET_API_URI } from '$env/static/private';
 import { redirect } from '@sveltejs/kit'
+import { generateRandomString } from '$lib/js';
 
-/** @function generateRandomString @param {number} length @returns {string}*/
-const generateRandomString = (length) => {
-	let result = '';
-	const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-	const charactersLength = characters.length;
-	for (let i = 0; i < length; i++) {
-		result += characters.charAt(Math.floor(Math.random() * charactersLength));
-	}
-	return result;
-};
-
-/** @type {import('./$types').PageServerLoad} */
 export async function load({ fetch, cookies }) {
 	if (cookies.get('csrftoken') === undefined || cookies.get('xsrftoken') === undefined) {
 		cookies.set('csrftoken', `${generateRandomString(32)}`, {
@@ -19,7 +9,7 @@ export async function load({ fetch, cookies }) {
 			sameSite: 'strict',
 			secure: false
 		});
-		const response = await fetch(`http://127.0.0.1:8123/api/auth/get_csrf_token/`);
+		const response = await fetch(`${SECRET_API_URI}/auth/get_csrf_token/`);
 		const data = await response.json();
 		cookies.set('xsrftoken', `${data['csrftoken']}`, {
 			path: '/',
@@ -51,20 +41,19 @@ export const actions = {
 			}
 		}
 		// eslint-disable-next-line no-unused-vars
-		const response = await fetch(`http://127.0.0.1:8123/api/auth/login/`, {
+		const response = await fetch(`${SECRET_API_URI}/auth/login/`, {
 			body: JSON.stringify(formData),
 			method: 'POST'
 		});
         
         const data = await response.json()
-        console.log(data)
         if (response.status === 200) {
             cookies.set('sessionid', `${data['sessionid']}`, {
                 path: '/',
                 sameSite: 'strict',
                 secure: false
             });
-            throw redirect(302, '/');
+            throw redirect(302, '/dashboard');
         }
         if (response.status === 400) {
             return {
