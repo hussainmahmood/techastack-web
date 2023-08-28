@@ -1,38 +1,50 @@
-# create-svelte
+# techstack-web
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+## Clone this repo
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
+Type following command in you terminal:
 
 ```bash
-# create a new project in the current directory
-npm create svelte@latest
+# clone this repo in your machine
+git clone https://github.com/hussainmahmood/techastack-web.git
 
-# create a new project in my-app
-npm create svelte@latest my-app
+# move to project folder
+cd techstack-web
 ```
 
-## Developing
+## Setup project
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Create a .env file with **SECRET_API_KEY** in root of your folder
+
+`SECRET_API_URI=http://{hostname}:{port}/api`
+
+add {hostname} and {port} of your django server
+
+> {hostname}:{port}(default) = 127.0.0.1:8000
+
+(.env.example has been attached for your convinience)
+
+Once you've cloned this project,  install dependencies with `npm install` (or `pnpm install` or `yarn`) and start a development server:
 
 ```bash
+# install dependencies
+npm i
+
+# start the dev server
 npm run dev
 
 # or start the server and open the app in a new browser tab
 npm run dev -- --open
 ```
 
+
 ## Building
 
 To create a production version of your app:
 
 ```bash
+# build production version
 npm run build
 ```
 
 You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.

@@ -1,7 +1,5 @@
 // place files you want to import through the `$lib/components` alias in this folder.
 
-//cards
-export { default as ProductCard } from "./cards/ProductCard.svelte"
 
 //icons
 export { default as Icon } from "./icons/Icon.svelte"
