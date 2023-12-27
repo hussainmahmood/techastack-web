@@ -6,6 +6,10 @@
 	import {clickOutside} from '$lib/js';
 	export let data;
 	let menuHidden = true;
+
+	import { dev } from '$app/environment';
+	import { inject } from '@vercel/analytics';
+	inject({ mode: dev ? 'development' : 'production' });
 </script>
 
 <svelte:head>
