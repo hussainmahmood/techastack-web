@@ -33,3 +33,6 @@ export { default as DropdownItemLink } from "./dropdowns/DropdownItemLink.svelte
 
 //tabs
 export { default as Tab } from "./tabs/Tab.svelte"
+
+//spinners
+export { default as DottedSpinner } from "./spinners/DottedSpinner.svelte"

@@ -85,9 +85,7 @@
 	{/if}
 </svelte:head>
 <button
-	class="{dark
-		? 'focus:ring-gray-400 ring-offset-gray-700'
-		: 'focus:ring-yellow-400 ring-offset-white'} border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 m-4"
+	class="border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none m-4"
 	class:hidden
 	on:click={toggle}
 >

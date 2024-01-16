@@ -5,13 +5,16 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
+		"tauri": "tauri",
 		"preview": "vite preview",
 		"test": "vitest",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
+		"@sveltejs/adapter-static": "^2.0.3",
 		"@sveltejs/kit": "^1.20.4",
+		"@tauri-apps/cli": "^1.5.9",
 		"autoprefixer": "^10.4.14",
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^8.5.0",
@@ -27,9 +30,9 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@sveltejs/adapter-vercel": "^3.1.0",
 		"@tailwindcss/forms": "^0.5.5",
-		"@vercel/analytics": "^1.1.1",
+		"@tauri-apps/api": "^1.5.3",
+		"svelte-cookie": "^1.0.1",
 		"zod": "^3.22.2"
 	}
 }

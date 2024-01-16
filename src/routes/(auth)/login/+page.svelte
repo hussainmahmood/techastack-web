@@ -1,29 +1,45 @@
 <script>
-	import { page } from '$app/stores';
-	import { enhance } from '$app/forms';
 	import { FloatingLabelInput, InputIconButton, Icon } from '$lib/components';
-	export let form;
+	import {goto} from "$app/navigation";
+	import { request} from '$lib/js'
+	import {getContext} from "svelte";
+
 	let passwordShown = false;
+	let error, email, password = "";
+	let loaded = getContext('loaded');
+	async function auth() {
+		const response = await request('/auth/login/', {
+			body: JSON.stringify({email, password}),
+			method: 'POST'
+		});
+		if (response.status === 200) {
+			await goto('/dashboard');
+			$loaded = false;
+        }
+		if (response.status === 400) {
+			const data = await response.json();
+			error = data.detail
+        }
+	}
+
+
 </script>
 
 <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
 	<div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
 		<form
 			class="space-y-6"
-			method="POST"
-			use:enhance
+			on:submit|preventDefault={auth}
 		>
-            {#if form?.error}
 			<p class="block text-sm font-medium leading-6 text-red-700 dark:text-red-400">
-				{form?.error}
+				{error? error : ""}
 			</p>
-            {/if}
-			<FloatingLabelInput
+         	<FloatingLabelInput
 				id="email"
 				name="email"
 				type="text"
 				autocomplete="email"
-				value={form?.data?.email ?? ''}
+				bind:value={email}
 				placeholder="Email"
 			/>
 			<FloatingLabelInput
@@ -31,6 +47,7 @@
 				name="password"
 				type={passwordShown == false ? 'password' : 'text'}
 				placeholder="Password"
+				bind:value={password}
 				autocomplete="off"
 			>
 				<InputIconButton on:click={() => (passwordShown = !passwordShown)}>
